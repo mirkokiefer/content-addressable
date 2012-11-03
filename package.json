@@ -1,0 +1,19 @@
+{
+  "name": "content-addressable",
+  "version": "0.0.0",
+  "description": "a content-addressable store interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "sha1": "~1.0.0"
+  },
+  "devDependencies": {
+    "pluggable-store": "*",
+    "mocha": "*"
+  },
+  "repository": "",
+  "author": "Mirko Kiefer <mail@mirkokiefer.com>",
+  "license": "BSD"
+}
