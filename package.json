@@ -1,6 +1,6 @@
 {
   "name": "content-addressable",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a content-addressable store interface",
   "main": "index.js",
   "scripts": {
