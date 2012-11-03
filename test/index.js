@@ -10,7 +10,9 @@
 
   store = server().memory();
 
-  contentAddressable = new ContentAddressable(store);
+  contentAddressable = new ContentAddressable({
+    store: store
+  });
 
   describe('ContentAddressable', function() {
     return describe('read/write', function() {

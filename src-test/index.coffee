@@ -4,7 +4,7 @@ ContentAddressable = require '../lib/index'
 assert = require 'assert'
 
 store = server().memory()
-contentAddressable = new ContentAddressable store
+contentAddressable = new ContentAddressable store: store
 
 describe 'ContentAddressable', () ->
   describe 'read/write', () ->
