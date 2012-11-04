@@ -1,10 +1,8 @@
 
-ContentAddressable = require '../lib/index'
-{server} = require 'pluggable-store'
+{memory} = require '../lib/index'
 assert = require 'assert'
 
-memoryStore = require('pluggable-store').server().memory()
-contentAddressable = new ContentAddressable store: memoryStore
+contentAddressable = memory()
 
 describe 'ContentAddressable', () ->
   describe 'read/write', () ->
