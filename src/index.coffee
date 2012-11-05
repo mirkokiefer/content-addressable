@@ -8,6 +8,11 @@ class ContentAddressable
     @store.write hash, data
     if cb then cb null, hash else hash
   read: (hash, cb) -> @store.read hash, cb
+  writeAll: (data, cb) ->
+    keyValues = ({key: computeHash(each), value: each} for each in data)
+    @store.writeAll keyValues, cb
+    key for {key, value} in keyValues
+  readAll: (hashs, cb) -> @store.readAll hashs, cb
 
 module.exports =
   Interface: ContentAddressable

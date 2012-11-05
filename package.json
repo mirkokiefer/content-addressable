@@ -1,6 +1,6 @@
 {
   "name": "content-addressable",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a content-addressable store interface",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "sha1": "~1.0.0",
-    "pluggable-store": "*"
+    "pluggable-store": "~0.0.4"
   },
   "devDependencies": {
     "pluggable-store": "*",

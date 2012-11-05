@@ -16,3 +16,8 @@ describe 'ContentAddressable', () ->
         contentAddressable.read hash, (err, res) ->
           assert.equal res, 'value1'
           done()
+    it 'should write and read multiple objects', ->
+      data = ['value1', 'value2']
+      hashs = contentAddressable.writeAll data
+      for each, i in hashs
+        assert.equal contentAddressable.read(each), data[i]
