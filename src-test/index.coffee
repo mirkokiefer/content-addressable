@@ -19,5 +19,12 @@ describe 'ContentAddressable', () ->
     it 'should write and read multiple objects', ->
       data = ['value1', 'value2']
       hashs = contentAddressable.writeAll data
-      for each, i in hashs
-        assert.equal contentAddressable.read(each), data[i]
+      readData = contentAddressable.readAll hashs
+      for each, i in readData
+        assert.equal each, data[i]
+    it 'should write and read multiple objects async', ->
+      data = ['value1', 'value2']
+      hashs = contentAddressable.writeAll data, (err, hashs) ->
+        contentAddressable.readAll hashs, (err, readData) ->
+          for each, i in readData
+            assert.equal each, data[i]

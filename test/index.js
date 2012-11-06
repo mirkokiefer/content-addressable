@@ -25,16 +25,32 @@
           });
         });
       });
-      return it('should write and read multiple objects', function() {
-        var data, each, hashs, i, _i, _len, _results;
+      it('should write and read multiple objects', function() {
+        var data, each, hashs, i, readData, _i, _len, _results;
         data = ['value1', 'value2'];
         hashs = contentAddressable.writeAll(data);
+        readData = contentAddressable.readAll(hashs);
         _results = [];
-        for (i = _i = 0, _len = hashs.length; _i < _len; i = ++_i) {
-          each = hashs[i];
-          _results.push(assert.equal(contentAddressable.read(each), data[i]));
+        for (i = _i = 0, _len = readData.length; _i < _len; i = ++_i) {
+          each = readData[i];
+          _results.push(assert.equal(each, data[i]));
         }
         return _results;
+      });
+      return it('should write and read multiple objects async', function() {
+        var data, hashs;
+        data = ['value1', 'value2'];
+        return hashs = contentAddressable.writeAll(data, function(err, hashs) {
+          return contentAddressable.readAll(hashs, function(err, readData) {
+            var each, i, _i, _len, _results;
+            _results = [];
+            for (i = _i = 0, _len = readData.length; _i < _len; i = ++_i) {
+              each = readData[i];
+              _results.push(assert.equal(each, data[i]));
+            }
+            return _results;
+          });
+        });
       });
     });
   });

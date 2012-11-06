@@ -10,11 +10,14 @@ class ContentAddressable
   read: (hash, cb) -> @store.read hash, cb
   writeAll: (data, cb) ->
     keyValues = ({key: computeHash(each), value: each} for each in data)
-    @store.writeAll keyValues, cb
-    key for {key, value} in keyValues
-  readAll: (hashs, cb) -> @store.readAll hashs, cb
+    hashs = (key for {key, value} in keyValues)
+    @store.writeAll keyValues, -> if cb then cb null, hashs
+    hashs
+  readAll: (hashs, cb) ->
+    if cb then @store.readAll hashs, cb
+    else @store.readAll hashs
 
 module.exports =
   Interface: ContentAddressable
   memory: -> new ContentAddressable store: require('pluggable-store').server().memory()
-  fileSystem: -> new ContentAddressable store: require('pluggable-store').server().fileSystem()
+  fileSystem: (args...) -> new ContentAddressable store: require('pluggable-store').server().fileSystem(args...)
