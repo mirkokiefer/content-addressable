@@ -19,5 +19,5 @@ class ContentAddressable
 
 module.exports =
   Interface: ContentAddressable
-  memory: -> new ContentAddressable store: require('pluggable-store').server().memory()
-  fileSystem: (args...) -> new ContentAddressable store: require('pluggable-store').server().fileSystem(args...)
+  memory: -> new ContentAddressable store: require('pluggable-store').memory()
+  fileSystem: (args...) -> new ContentAddressable store: require('pluggable-store').server.fileSystem(args...)
