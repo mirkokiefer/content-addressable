@@ -4,8 +4,8 @@
   "description": "a content-addressable store interface",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha",
-    "build": "coffee -o ./lib -c ./src"
+    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script",
+    "build": "./node_modules/.bin/coffee -o ./lib -cw ./src"
   },
   "dependencies": {
     "sha1": "1.0.0",
