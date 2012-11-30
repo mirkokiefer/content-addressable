@@ -5,17 +5,13 @@ class ContentAddressable
   constructor: ({@store}) ->
   write: (data, cb) ->
     hash = computeHash data
-    @store.write hash, data
-    if cb then cb null, hash else hash
+    @store.write hash, data, (err) -> cb err, hash
   read: (hash, cb) -> @store.read hash, cb
   writeAll: (data, cb) ->
     keyValues = ({key: computeHash(each), value: each} for each in data)
     hashs = (key for {key, value} in keyValues)
-    @store.writeAll keyValues, -> if cb then cb null, hashs
-    hashs
-  readAll: (hashs, cb) ->
-    if cb then @store.readAll hashs, cb
-    else @store.readAll hashs
+    @store.writeAll keyValues, (err) -> cb err, hashs
+  readAll: (hashs, cb) -> @store.readAll hashs, cb
 
 module.exports =
   Interface: ContentAddressable
