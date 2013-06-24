@@ -1,5 +1,5 @@
 #content-addressable store
-A content-addressable store interface that can be used with any [pluggable-store](https://github.com/mirkok/pluggable-store).
+A content-addressable store interface that can be used with any [pluggable-store](https://github.com/mirkokiefer/pluggable-store).
 
 ##Usage example
 
